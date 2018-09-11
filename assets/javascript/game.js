@@ -1,5 +1,3 @@
-console.log("hi");
-
 var randomWordArray = ["hibiscus", "dogwood", "pine", "ficus"];
 //var randomWord = randomWordArray[Math.floor(Math.random() * randomWordArray.length)];
 

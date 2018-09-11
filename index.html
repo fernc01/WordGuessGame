@@ -1,32 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Botanical Hangman</title>   
-        <script src="/assets/javascript/game.js"></script>
+        <title>Psychic Game</title>
     </head>
-<body> 
-    //"Press any key to get started!"
-    <h1> Press any key to get started! </h1>
+<body>
+    
+    <h1>Psychic Game</h1>
+    <p>Guess what letter I am thinking of:</p>
+    <p id= "wins"> </p>
+    <p id="losses"> </p>
+    <p id="guessesLeft"> </p>
+    <p id="guesses"> </p>
 
-    
-    
-    
-   
-    //Response to key starts game
-        //Display Wins
-        //Display Guesses
-        //Display Letters Guessed
-    //Create array with word possibilities
+    <script type="text/javascript">
+        var lettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
 
-    //Make computer pick random word and display as _ _ _ 
-        //Decrement guesses remaining
-        //Add to letters guessed
-        //Show letters if correct
+        var randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
 
-    //Display wins or loss
-    //Start new game
+        var winsNumber = 0;
+        var lossesNumber = 0;
+        var guessesLeftNum = 5;
+        
+        
+        while(guessesLeftNum < 6){
+            document.getElementById("wins").innerHTML = "Wins: " + winsNumber;
+            document.getElementById("losses").innerHTML = "Losses: " + lossesNumber;
+            document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeftNum;
+            document.getElementById("guesses").innerHTML = "Your Guesses: ";
+            
 
-    
-    
+            document.onkeyup = function() {
+            var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+            if (userGuess !== randomLetter){
+                document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeftNum--;
+                document.getElementById("guesses").innerHTML = "Your Guesses: " + userGuess + ", ";
+            }
+        }
+        }
+
+
+
+    </script>
+
+
 </body>
 </html>

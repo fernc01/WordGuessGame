@@ -6,38 +6,57 @@
 <body>
     
     <h1>Psychic Game</h1>
-    <p>Guess what letter I am thinking of:</p>
+    <p>Guess what letter I am thinking of.</p>
     <p id= "wins"> </p>
     <p id="losses"> </p>
     <p id="guessesLeft"> </p>
     <p id="guesses"> </p>
 
     <script type="text/javascript">
-        var lettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"];
+        var lettersArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-        var randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
-
+       
         var winsNumber = 0;
         var lossesNumber = 0;
-        var guessesLeftNum = 5;
+        var guessesLeftNum = 10;
+
         
-        
-        while(guessesLeftNum < 6){
-            document.getElementById("wins").innerHTML = "Wins: " + winsNumber;
+        document.getElementById("wins").innerHTML = "Wins: " + winsNumber;
             document.getElementById("losses").innerHTML = "Losses: " + lossesNumber;
             document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeftNum;
             document.getElementById("guesses").innerHTML = "Your Guesses: ";
-            
 
+       // for(guessesLeftNum = 5; guessesLeftNum > 4; guessesLeftNum){
+        var randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+       
+       
             document.onkeyup = function() {
             var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+            
 
             if (userGuess !== randomLetter){
                 document.getElementById("guessesLeft").innerHTML = "Guesses Left: " + guessesLeftNum--;
                 document.getElementById("guesses").innerHTML = "Your Guesses: " + userGuess + ", ";
             }
+            if(userGuess == randomLetter){
+                document.getElementById("wins").innerHTML = "Wins: " + winsNumber++;  
+                guessesLeftNum = 10;
+                randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+            }
+            if(guessesLeftNum == 0){
+            document.getElementById("losses").innerHTML = "Losses: " + lossesNumber++;
+            guessesLeftNum = 10;
+            randomLetter = lettersArray[Math.floor(Math.random() * lettersArray.length)];
+            
+            }
+            
+
         }
-        }
+            
+        
+       // }
+
+        
 
 
 
